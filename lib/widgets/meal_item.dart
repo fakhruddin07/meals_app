@@ -16,6 +16,38 @@ class MealItem extends StatelessWidget {
     required this.affordability,
   });
 
+  String get complexityText {
+    switch (complexity) {
+      case Complexity.simple:
+        return "Simple";
+        break;
+      case Complexity.challenging:
+        return "Challenging";
+        break;
+      case Complexity.hard:
+        return "Hard";
+        break;
+      default:
+        return "Unkown";
+    }
+  }
+
+  String get affordabilityText {
+    switch (affordability) {
+      case Affordability.affordable:
+        return "Affordable";
+        break;
+      case Affordability.pricey:
+        return "Pricey";
+        break;
+      case Affordability.luxurious:
+        return "Luxurious";
+        break;
+      default:
+        return "Unkown";
+    }
+  }
+
   void selectMeal() {}
 
   @override
@@ -41,8 +73,50 @@ class MealItem extends StatelessWidget {
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),
-            )
+            ),
+            Positioned(
+              bottom: 20,
+              right: 10,
+              child: Container(
+                width: 300,
+                color: Colors.black54,
+                padding:
+                    const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                child: Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 26,
+                    color: Colors.white,
+                  ),
+                  softWrap: true,
+                  overflow: TextOverflow.fade,
+                ),
+              ),
+            ),
           ]),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Row(children: [
+                  const Icon(Icons.schedule),
+                  const SizedBox(width: 5),
+                  Text("$duration min")
+                ]),
+                Row(children: [
+                  const Icon(Icons.work),
+                  const SizedBox(width: 5),
+                  Text(complexityText)
+                ]),
+                Row(children: [
+                  const Icon(Icons.attach_money),
+                  const SizedBox(width: 5),
+                  Text(affordabilityText)
+                ]),
+              ],
+            ),
+          )
         ]),
       ),
     );
