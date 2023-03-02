@@ -11,8 +11,14 @@ class TabsScreen extends StatefulWidget {
 
 class _TabsScreenState extends State<TabsScreen> {
   final List<Map<String, Object>> _pages = [
-    {"page": const CategoriesScreen(), "title": "Categories"},
-    {"page": const FavoritesScreen(), "title": "Your Favorite"},
+    {
+      "page": const CategoriesScreen(),
+      "title": "Categories",
+    },
+    {
+      "page": const FavoritesScreen(),
+      "title": "Your Favorites",
+    },
   ];
 
   int _selectedPageIndex = 0;
@@ -39,11 +45,11 @@ class _TabsScreenState extends State<TabsScreen> {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.category),
-            label: "Category",
+            label: "Categories",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
-            label: "Favorite",
+            label: "Favorites",
           ),
         ],
       ),
